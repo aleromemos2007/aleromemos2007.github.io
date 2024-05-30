@@ -29,6 +29,20 @@
         #opciones {
             display: flex;
         }
+
+        /* Estilos para la pregunta */
+        .pregunta-estilo {
+            font-size: 20px; /* Cambia el tamaño de la fuente */
+            font-family: 'Nexa'; /* Cambia la fuente */
+            color: #333; /* Color del texto */
+            /* Agrega aquí más estilos si lo necesitas */
+        }
+
+        /* Estilos para las opciones */
+        .opcion-estilo {
+            font-size: 18px;
+            /* Otros estilos que desees aplicar */
+        }
     </style>
     <link rel="stylesheet" href="Dictionary.css">
     <meta charset="UTF-8">
@@ -1240,14 +1254,16 @@
 </div>
 
 <h1>The Color Questions Game!</h1>
-    <h3>According to the information you saw in the dictionary about colors, you will face 20 questions testing your knowledge. Good luck!</h3>
-    <div id="pregunta"></div>
+    <h3 class="question-color-game">According to the information you saw in the dictionary about colors, you will face 20 questions testing your knowledge. Good luck!</h3>
+    <div id="pregunta" class="pregunta-estilo"></div>
     <div id="opciones"></div>
     <div id="puntaje">Score: 0</div>
 
     <script>
-        const questions = [
-            {
+
+         // Tu arreglo de preguntas
+         const questions = [
+         {
                 id: 1,
                 question: "Which one is the blue color?",
                 options: ["<img src='https://www.colores.org.es/imagenes_colores/azul.jpg'>", "<img src='https://www.colores.org.es/imagenes_colores/amarillo-html.jpg'>", "<img src='https://www.colores.org.es/imagenes_colores/aguamarina-medio.jpg'>", "<img src='https://www.colores.org.es/imagenes_colores/amatista.jpg'>" ],
@@ -1398,16 +1414,19 @@
         let currentQuestion = 0;
         let score = 0;
 
+        // Funciones de tu quiz
         function showQuestion() {
             const question = selectedQuestions[currentQuestion];
-            document.getElementById("pregunta").textContent = `Question ${question.id}: ${question.question}`;
+            const preguntaElement = document.getElementById("pregunta");
+            preguntaElement.textContent = `Question ${question.id}: ${question.question}`;
+            preguntaElement.classList.add("pregunta-estilo"); // Aplica la clase de estilo
 
             const optionsDiv = document.getElementById("opciones");
             optionsDiv.innerHTML = "";
 
             question.options.forEach((option, index) => {
                 const optionDiv = document.createElement("div");
-                optionDiv.classList.add("opcion");
+                optionDiv.classList.add("opcion", "opcion-estilo"); // Aplica la clase de estilo
                 optionDiv.innerHTML = option;
                 optionDiv.addEventListener("click", () => checkAnswer(index));
                 optionsDiv.appendChild(optionDiv);
@@ -1454,6 +1473,7 @@
             showQuestion();
         });
         document.body.appendChild(restartButton);
+        showQuestion();
     </script>
 
     <script src="Dictionary.js"></script>
