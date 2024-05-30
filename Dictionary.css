@@ -255,3 +255,15 @@ body{
 .question-color-game{
     font-family: nexa;
 }
+.play-shapes{
+    margin-left: 40px;
+    font-family: nexa;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.play-colors{
+    margin-left: 40px;
+    font-family: nexa;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
